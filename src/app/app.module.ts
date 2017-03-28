@@ -13,6 +13,7 @@ import {JoinComponent} from "./join/join.component";
 import {FormValidationService} from "./shared/form-validation.service";
 import {PassWordErrorComponent} from "./shared/error/password-error.component";
 import {EmailErrorComponent} from "./shared/error/email-error.component";
+import {HomeModule} from "./home/home.module";
 @NgModule({
   declarations: [
     LoginComponent,
@@ -22,6 +23,7 @@ import {EmailErrorComponent} from "./shared/error/email-error.component";
     EmailErrorComponent,
   ],
   imports: [
+    HomeModule,
     AppRoutingModule,
     BrowserModule,
     FormsModule,

@@ -8,7 +8,7 @@ import {HomeComponent} from "app/home/home.component";
   imports: [
     RouterModule.forRoot([
       {
-        path: '**',
+        path: '',
         redirectTo: '/home',
         pathMatch: 'full',
       },

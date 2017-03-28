@@ -1,0 +1,50 @@
+<form [formGroup]="joinForm" (submit)="onJoin()">
+  <md-input-container class="container">
+    <input mdInput
+           formControlName="userEmail"
+           type="email"
+           placeholder="Email"
+           required>
+    <md-hint>
+      <email-error [control]="joinForm.controls.userEmail"></email-error>
+    </md-hint>
+  </md-input-container>
+
+  <md-input-container class="container">
+    <input mdInput
+           formControlName="userName"
+           type="text"
+           placeholder="User Name"
+           required>
+    <md-hint>
+      <user-name-error [control]="joinForm.controls.userName"></user-name-error>
+    </md-hint>
+  </md-input-container>
+
+  <md-input-container class="container">
+    <input mdInput
+           formControlName="password"
+           type="password"
+           placeholder="Password"
+           required>
+    <md-hint>
+      <password-error [control]="joinForm.controls.password"></password-error>
+    </md-hint>
+  </md-input-container>
+
+  <form [formGroup]="passwordConfirm">
+    <md-input-container class="container">
+      <input mdInput
+             formControlName="passwordConfirm"
+             type="password"
+             placeholder="Password Retry"
+             required>
+    </md-input-container>
+  </form>
+
+  <div>
+    <button type="submit" md-raised-button [disabled]="!joinForm.valid && !passwordConfirm.valid">저장</button>
+  </div>
+</form>
+
+

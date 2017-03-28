@@ -14,6 +14,7 @@ import {FormValidationService} from "./shared/form-validation.service";
 import {PassWordErrorComponent} from "./shared/error/password-error.component";
 import {EmailErrorComponent} from "./shared/error/email-error.component";
 import {HomeModule} from "./home/home.module";
+import {UserNameErrorComponent} from "app/shared/error/user-name-error.component";
 @NgModule({
   declarations: [
     LoginComponent,
@@ -21,6 +22,7 @@ import {HomeModule} from "./home/home.module";
     AppComponent,
     PassWordErrorComponent,
     EmailErrorComponent,
+    UserNameErrorComponent,
   ],
   imports: [
     HomeModule,

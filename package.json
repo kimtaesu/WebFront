@@ -10,6 +10,19 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "angular-cli": {
+    "scripts": [
+      "../node_modules/jquery/dist/jquery.js",
+      "../node_modules/tether/dist/js/tether.js",
+      "../node_modules/bootstrap/dist/js/bootstrap.js",
+      "../node_modules/@angular/material/bundles/material.umd.js"
+    ]
+  },
+  "styles": [
+    "../material2-app-theme.scss",
+    "../node_modules/bootstrap/dist/css/bootstrap.css",
+    "styles.css"
+  ],
   "private": true,
   "dependencies": {
     "@angular/common": "^4.0.0",
@@ -17,6 +30,7 @@
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
+    "@angular/material": "^2.0.0-beta.2",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
@@ -27,8 +41,10 @@
   "devDependencies": {
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
+    "@angular/material": "^2.0.0-beta.2",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "hammerjs": "^2.0.8",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",

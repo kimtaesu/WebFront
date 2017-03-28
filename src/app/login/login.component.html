@@ -1,9 +1,12 @@
-<md-input-container class="container">
-  <input mdInput placeholder="Email"/>
-</md-input-container>
-<md-input-container class="container">
-  <input mdInput placeholder="Password"/>
-</md-input-container>
+<form [formGroup]="LoginForm">
+  <md-input-container class="container">
+    <input mdInput placeholder="Email"/>
+  </md-input-container>
+  <md-input-container class="container">
+    <input mdInput placeholder="Password"/>
+  </md-input-container>
+</form>
+
 <div>
   <button md-button>Sign in</button>
   <button md-raised-button>Forgot password?</button>

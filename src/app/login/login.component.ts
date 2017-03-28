@@ -1,28 +1,23 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, Validators} from "@angular/forms";
+import {FormValidationService} from "../shared/form-validation.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [FormValidationService]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  LoginForm: FormGroup
+  private loginForm: FormValidationService;
 
-  ngOnInit(): void {
-    this.LoginForm = new FormGroup({
-      email: new FormControl('', Validators.compose([Validators.required, ValidationService.emailValidator])),
-      password: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(20),
-      userName: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(20),
-      ])),
-    });
+  constructor(form: FormValidationService) {
+    form.removeControl('userName')
+    this.loginForm = form
+  }
+
+  onLogin() {
   }
 
 }

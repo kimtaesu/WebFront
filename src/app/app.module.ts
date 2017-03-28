@@ -10,11 +10,16 @@ import {LoginComponent} from "./login/login.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MaterialModule} from "@angular/material";
 import {JoinComponent} from "./join/join.component";
+import {FormValidationService} from "./shared/form-validation.service";
+import {PassWordErrorComponent} from "./shared/error/password-error.component";
+import {EmailErrorComponent} from "./shared/error/email-error.component";
 @NgModule({
   declarations: [
     LoginComponent,
     JoinComponent,
-    AppComponent
+    AppComponent,
+    PassWordErrorComponent,
+    EmailErrorComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -25,7 +30,7 @@ import {JoinComponent} from "./join/join.component";
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [FormValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

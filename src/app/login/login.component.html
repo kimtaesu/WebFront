@@ -1,13 +1,29 @@
-<form [formGroup]="LoginForm">
+<form [formGroup]="loginForm" (submit)="onLogin()">
   <md-input-container class="container">
-    <input mdInput placeholder="Email"/>
+    <input mdInput
+           placeholder="Email"
+           formControlName="userEmail"
+           type="email"
+           required/>
+    <md-hint>
+      <email-error [control]="loginForm.controls"></email-error>
+    </md-hint>
   </md-input-container>
   <md-input-container class="container">
-    <input mdInput placeholder="Password"/>
+    <input mdInput
+           placeholder="Password"
+           formControlName="password"
+           type="password"
+           required/>
+    <md-hint>
+      <password-error [control]="loginForm.controls"></password-error>
+    </md-hint>
   </md-input-container>
-</form>
 
-<div>
-  <button md-button>Sign in</button>
-  <button md-raised-button>Forgot password?</button>
-</div>
+  <p>loginForm.valid {{loginForm.valid}}</p>
+  <div>
+    <button type="submit" md-button [disabled]="!loginForm.valid">Sign in</button>
+    <button md-raised-button>Forgot password?</button>
+  </div>
+
+</form>

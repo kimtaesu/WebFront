@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
+import {JoinComponent} from "./join/join.component";
 
 @NgModule({
   imports: [
@@ -13,6 +14,10 @@ import {LoginComponent} from "./login/login.component";
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'join',
+        component: JoinComponent
       }
     ])
   ],

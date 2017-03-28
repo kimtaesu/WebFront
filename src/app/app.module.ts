@@ -4,13 +4,16 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {MaterialModule} from "@angular/material";
 import "hammerjs";
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from "./login/login.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MaterialModule} from "@angular/material";
+import {JoinComponent} from "./join/join.component";
 @NgModule({
   declarations: [
     LoginComponent,
+    JoinComponent,
     AppComponent
   ],
   imports: [
@@ -18,6 +21,7 @@ import {LoginComponent} from "./login/login.component";
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     MaterialModule,
   ],
   providers: [],

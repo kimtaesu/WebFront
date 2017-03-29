@@ -10,19 +10,15 @@ import {LoginComponent} from "./login/login.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MaterialModule} from "@angular/material";
 import {JoinComponent} from "./join/join.component";
-import {FormValidationService} from "./shared/form-validation.service";
-import {PassWordErrorComponent} from "./shared/error/password-error.component";
-import {EmailErrorComponent} from "./shared/error/email-error.component";
+import {FormValidationService} from "./shared/error/form-validation.service";
 import {HomeModule} from "./home/home.module";
-import {UserNameErrorComponent} from "app/shared/error/user-name-error.component";
+import {InputErrorPipe} from "./shared/error/input-error.pipe";
 @NgModule({
   declarations: [
     LoginComponent,
     JoinComponent,
     AppComponent,
-    PassWordErrorComponent,
-    EmailErrorComponent,
-    UserNameErrorComponent,
+    InputErrorPipe,
   ],
   imports: [
     HomeModule,

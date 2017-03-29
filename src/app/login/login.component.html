@@ -5,9 +5,6 @@
            formControlName="userEmail"
            type="email"
            required/>
-    <md-hint>
-      <email-error [control]="loginForm.controls.userEmail"></email-error>
-    </md-hint>
   </md-input-container>
   <md-input-container class="container">
     <input mdInput
@@ -15,13 +12,10 @@
            formControlName="password"
            type="password"
            required/>
-    <md-hint>
-      <password-error [control]="loginForm.controls.password"></password-error>
-    </md-hint>
   </md-input-container>
 
   <div>
-    <button type="submit" md-button [disabled]="!loginForm.valid">Sign in</button>
+    <button type="submit" md-button>Sign in</button>
     <button md-raised-button>Forgot password?</button>
   </div>
 

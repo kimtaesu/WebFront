@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from "@angular/core";
 import {AbstractControl, Form, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {normalizeAsyncValidator} from "@angular/forms/src/directives/normalize_validator";
+import {environment} from "../../../environments/environment";
 @Injectable()
 export class FormValidationService extends FormGroup {
 
@@ -15,13 +16,13 @@ export class FormValidationService extends FormGroup {
 
   withPassword(): this {
     this.addControl('password', new FormControl('',
-      Validators.compose([Validators.required, Validators.maxLength(20), Validators.minLength(6), this.passwordValidator])))
+      Validators.compose([Validators.required, this.passwordValidator])))
     return this
   }
 
   withUserName(): this {
     this.addControl('userName', new FormControl('',
-      Validators.compose([Validators.required, Validators.maxLength(20), Validators.minLength(6), this.userNameValidator])))
+      Validators.compose([Validators.required, this.userNameValidator])))
     return this
   }
 
@@ -30,27 +31,27 @@ export class FormValidationService extends FormGroup {
     if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
       return null;
     } else {
-      return {'invalidEmailAddress': true};
+      return {'invalidEmailAddress': '올바른 이메일 형식이 아닙니다.'};
     }
   }
 
 
   passwordValidator(control) {
     // (?=.*[0-9])       - Assert a string has at least one number
-    if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]/)) {
+    if (control.value.match(environment.validation.passwordRex)) {
       return null;
     } else {
-      return {'invalidPassword': true};
+      var msg = environment.validation.minLen + '~' + environment.validation.maxLen + '자릿 수'
+      return {'invalidPassword': msg};
     }
   }
 
-  userNameValidator(control) {
-    // (?=.*[0-9])       - Assert a string has at least one number
-
-    if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]/)) {
+  userNameValidator(control: FormControl) {
+    if (control.value.match(environment.validation.userNameRex)) {
       return null;
     } else {
-      return {'invalidUserName': true};
+      var msg = environment.validation.minLen + '~' + environment.validation.maxLen + '자릿 수'
+      return {'invalidUserName': msg};
     }
   }
 }

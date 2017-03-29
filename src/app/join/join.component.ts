@@ -2,7 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {FormGroup, Validators, FormControl, FormBuilder, ValidatorFn} from "@angular/forms";
 import {Http, RequestOptionsArgs} from "@angular/http";
 import {environment} from "../../environments/environment";
-import {FormValidationService} from "../shared/form-validation.service";
+import {FormValidationService} from "../shared/error/form-validation.service";
+import {getJsonUtf8Header} from "../shared/utils";
 
 @Component({
   selector: 'app-join',
@@ -13,8 +14,13 @@ export class JoinComponent implements OnInit {
 
   private joinForm: FormValidationService;
   private passwordConfirm: FormGroup
+  user = {
+    userEmail: '',
+    userName: '',
+    password: '',
+  }
 
-  constructor(form: FormValidationService, private fb: FormBuilder) {
+  constructor(form: FormValidationService, private fb: FormBuilder, private http: Http) {
     this.joinForm = form.withEmail()
       .withPassword()
       .withUserName()
@@ -31,8 +37,14 @@ export class JoinComponent implements OnInit {
     })
   }
 
+
   onJoin() {
-    console.info("onJoin")
+    this.http.post(environment.api.join, JSON.stringify(this.user), {headers: getJsonUtf8Header()})
+      .subscribe((res) => {
+        console.info(res)
+      }, (error) => {
+        alert(error)
+      });
   }
 
   equalValueValidator(targetKey: string, toMatchKey: string): ValidatorFn {
@@ -45,7 +57,7 @@ export class JoinComponent implements OnInit {
         if (isMatch)
           return null
       }
-      return {'MissMatch': true};
+      return {'passwordMissMatch': '패스워드가 일치하지 않습니다.'};
     };
   }
 }

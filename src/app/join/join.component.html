@@ -4,9 +4,13 @@
            formControlName="userEmail"
            type="email"
            placeholder="Email"
+           [(ngModel)]="user.userEmail"
            required>
     <md-hint>
-      <email-error [control]="joinForm.controls.userEmail"></email-error>
+      <div [hidden]="!joinForm.controls.userEmail.touched">
+        <span *ngIf="!joinForm.controls.userEmail.valid">{{joinForm.controls.userEmail.errors
+          | inputError: ['invalidEmailAddress']}}</span>
+      </div>
     </md-hint>
   </md-input-container>
 
@@ -15,9 +19,13 @@
            formControlName="userName"
            type="text"
            placeholder="User Name"
+           [(ngModel)]="user.userName"
            required>
     <md-hint>
-      <user-name-error [control]="joinForm.controls.userName"></user-name-error>
+      <div [hidden]="!joinForm.controls.userName.touched">
+        <span *ngIf="!joinForm.controls.userName.valid">{{joinForm.controls.userName.errors
+          | inputError: ['invalidUserName','invalidLength']}}</span>
+      </div>
     </md-hint>
   </md-input-container>
 
@@ -26,9 +34,13 @@
            formControlName="password"
            type="password"
            placeholder="Password"
+           [(ngModel)]="user.password"
            required>
     <md-hint>
-      <password-error [control]="joinForm.controls.password"></password-error>
+      <div [hidden]="!joinForm.controls.password.touched">
+        <span *ngIf="!joinForm.controls.password.valid">{{joinForm.controls.password.errors
+          | inputError : ['invalidPassword', 'invalidLength']}}</span>
+      </div>
     </md-hint>
   </md-input-container>
 
@@ -39,9 +51,16 @@
              type="password"
              placeholder="Password Retry"
              required>
+      <md-hint>
+        <div [hidden]="!passwordConfirm.controls.passwordConfirm.touched">
+        <span *ngIf="!passwordConfirm.valid">{{passwordConfirm.errors
+          | inputError : ['passwordMissMatch']}}</span>
+        </div>
+      </md-hint>
     </md-input-container>
   </form>
-
+  <p> {{joinForm.valid}}</p>
+  <p> {{passwordConfirm.valid}}</p>
   <div>
     <button type="submit" md-raised-button [disabled]="!joinForm.valid && !passwordConfirm.valid">저장</button>
   </div>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {FormValidationService} from "../shared/form-validation.service";
+import {FormValidationService} from "../shared/error/form-validation.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent {
 
   private loginForm: FormValidationService;
 
-  constructor(form: FormValidationService, private fb:FormBuilder) {
+  constructor(form: FormValidationService, private fb: FormBuilder) {
     this.loginForm = form
       .withEmail()
       .withPassword()
